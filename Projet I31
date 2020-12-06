@@ -4,9 +4,9 @@
 #include <gmp.h>
 #include <string.h>
 
-/*création de la fonction nbrpremier qui va nous permettre de générer un très 
+/*crÃ©ation de la fonction nbrpremier qui va nous permettre de gÃ©nÃ©rer un trÃ¨s 
 grand nombre premier
-En plus de la fonction nbrpremiere qui est la même chose mais juste pour 
+En plus de la fonction nbrpremiere qui est la mÃªme chose mais juste pour 
 la variable e*/
 
 int nbrpremier(int n, int n1,mpz_t p,mpz_t q) {
@@ -23,7 +23,7 @@ int nbrpremier(int n, int n1,mpz_t p,mpz_t q) {
 	gmp_randseed_ui(r, seed);
 
 
-	// generation d’un nombre premier de n bits sur p
+	// generation dâ€™un nombre premier de n bits sur p
 	do {
 		mpz_urandomb(p, r, n);
 		mpz_setbit(p, n-1 );
@@ -53,7 +53,7 @@ int nbrpremiere(int n, mpz_t p) {
 	gmp_randseed_ui(r, seed);
 
 
-	// generation d’un nombre premier de n bits sur p
+	// generation dâ€™un nombre premier de n bits sur p
 	do {
 		mpz_urandomb(p, r, n);
 		mpz_setbit(p, n - 1);
@@ -62,15 +62,15 @@ int nbrpremiere(int n, mpz_t p) {
 	} while (mpz_sizeinbase(p, 2) != n);
 }
 
-/*Création de la fonction qui permet d'élever un nombre à une puissance
-modulo un entier qui finalement ne nous a pas été utile*/
+/*CrÃ©ation de la fonction qui permet d'Ã©lever un nombre Ã  une puissance
+modulo un entier qui finalement ne nous a pas Ã©tÃ© utile*/
 
 /*int exponentiation_modulaire(mpz_t exp, mpz_t mod, mpz_t base)
 {
 	mpz_t e1, res;
 	mpz_inits(e1,)
 	while (e1 < exp)
-		 Cette boucle nous permet de calculer le nombre à la puissance
+		 Cette boucle nous permet de calculer le nombre Ã  la puissance
 		e modulo m 
 	{
 		res = (base * res) % mod;
@@ -79,7 +79,7 @@ modulo un entier qui finalement ne nous a pas été utile*/
 	return res;
 }*/
 
-/* On a fait une fonction concaténation pour nous permettre de concatener toute les informations données pour le certificat electronique */
+/* On a fait une fonction concatÃ©nation pour nous permettre de concatener toute les informations donnÃ©es pour le certificat electronique */
 
 void concatenation(char nom[100], char prenom[100], char datenaissance[100], char email[100], mpz_t identite[10000], mpz_t e, int a, int b, int c, int d)
 {
@@ -103,7 +103,7 @@ void concatenation(char nom[100], char prenom[100], char datenaissance[100], cha
 	mpz_set(identite[a + b + c + d], e);
 }
 
-/* la fonction chiffrement_certif nous permet de chiffrer les données du certificat electronique */
+/* la fonction chiffrement_certif nous permet de chiffrer les donnÃ©es du certificat electronique */
 
 void chiffrement_certif(mpz_t identite[10000], mpz_t identitecettifie[10000], int nbcar, mpz_t e, mpz_t n)
 {
@@ -114,7 +114,7 @@ void chiffrement_certif(mpz_t identite[10000], mpz_t identitecettifie[10000], in
 	}
 }
 
-/* La fonction verif sert à verifier que identite et identitecettifie sont bien les mêmes pour le certificat electronique */
+/* La fonction verif sert Ã  verifier que identite et identitecettifie sont bien les mÃªmes pour le certificat electronique */
 
 void verif(mpz_t verifcertif[10000], mpz_t identite[10000], mpz_t identitecettifie[10000], mpz_t d, mpz_t n, int nbcar)
 {
@@ -129,7 +129,7 @@ void verif(mpz_t verifcertif[10000], mpz_t identite[10000], mpz_t identitecettif
 	printf("Le certificat electronique est correct\n");
 }
 
-/* la fonction verification nous sert a verifier si c1 et c2 (ici tabM et tabM3) sont les même pour la signature numérique */
+/* la fonction verification nous sert a verifier si c1 et c2 (ici tabM et tabM3) sont les mÃªme pour la signature numÃ©rique */
 
 void verificaton(mpz_t tabM[10][64], mpz_t tabM2[10][64], mpz_t e, mpz_t n, int compt, mpz_t tabM3[10][64])
 {
@@ -180,7 +180,7 @@ void MD8(char M[], mpz_t tabM[10][64], int compt)
 
 int main()
 {
-/* déclaration et initialisation de toute les variables et tableaux necessaires et on demande a l'utilisaturs de rentrer toutes les informations necessaires */
+/* dÃ©claration et initialisation de toute les variables et tableaux necessaires et on demande a l'utilisaturs de rentrer toutes les informations necessaires */
 	int  k, lp, lq, tphi, i, i1, i2, i3, compt = 1, i4, t, u, v, w, i5, nbcar;
 	mpz_t p, q, n, phi, p1, q1, e, d, c, m, messdechi, tabM2[10][64], tabM[10][64], tabM3[10][64], identite[10000], identitecettifie[10000], verifcertif[10000];
 	char M[10000], nom[100], prenom[100], datenaissance[100], email[100];
@@ -229,7 +229,7 @@ int main()
 
 	}
 
-/* on initialise les valeurs lp et lq pour nous permettre de generer des nombres premiers aléatoires de type mpz_t */
+/* on initialise les valeurs lp et lq pour nous permettre de generer des nombres premiers alÃ©atoires de type mpz_t */
 	if (k % 2 == 0) {
 		lp = k / 2;
 		lq = k / 2;
@@ -239,11 +239,11 @@ int main()
 		lq = lp + 1;
 	};
 
-/* on récupère 2 valeurs aléatoires, des nombres premiers de taille lp et lq, puis on initialise n */
+/* on rÃ©cupÃ¨re 2 valeurs alÃ©atoires, des nombres premiers de taille lp et lq, puis on initialise n */
 	nbrpremier(lp, lq,p,q);
 	mpz_mul(n, p, q); /* n = p * q */
 
-/* on récupère la valeur de phi ((p-1) x (q-1)) qui nous permet de prendre son nombre de bit et initialiser tphi a cette valeur pour avoir e, notre cle publique */
+/* on rÃ©cupÃ¨re la valeur de phi ((p-1) x (q-1)) qui nous permet de prendre son nombre de bit et initialiser tphi a cette valeur pour avoir e, notre cle publique */
 	mpz_sub_ui(p1, p, 1);
 	mpz_sub_ui(q1, q, 1);
 	mpz_mul(phi, p1, q1);
@@ -253,12 +253,12 @@ int main()
 	mpz_setbit(e, tphi-2);
 	nbrpremiere(tphi-2, e);
 
-/* grace a e, nous pouvons donc obtenir la valeur de d, la cle privée */
+/* grace a e, nous pouvons donc obtenir la valeur de d, la cle privÃ©e */
 	mpz_invert(d, e, phi);
 
 	gmp_printf("La cle publique est: %Zd\n", e);
 
-/* l'appel de toute les fonctions dont nous avons besoin pour le chiffrement, la signature numérique, et le certificat electronique */
+/* l'appel de toute les fonctions dont nous avons besoin pour le chiffrement, la signature numÃ©rique, et le certificat electronique */
 	MD8(M, tabM, compt);
 	dechiffrement_matrice(tabM, tabM2, d, n, compt);
 	verificaton(tabM, tabM2, e, n, compt, tabM3);
